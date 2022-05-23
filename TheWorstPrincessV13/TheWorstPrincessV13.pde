@@ -176,10 +176,10 @@ void interaction(String QRCode, String UserId) {
 
     case QR1:
       println ("You are in part 1 of the story, you need to scan QR #1!");
-      if (user.role != "prince") {
+      if (!user.role.equals("prince")) {
         println("It is not your turn.");
         WrongQRSound();
-      } else if (user.role == "prince" && !QRCode.equals("1-armour")) { //equals??
+      } else if (user.role.equals("prince") && !QRCode.equals("1-armour")) { //equals??
         println("Try another QR code. You tried: ", QRCode, "with role: ", user.role);        
         WrongQRSound();
       } else {
@@ -194,7 +194,7 @@ void interaction(String QRCode, String UserId) {
 
     case QR2:
       println ("You are in part 2 of the story, you need to scan QR #2!");
-      if (user.role != "dragon") {
+      if (!user.role.equals("dragon")) {
         println("It is not your turn.");
         WrongQRSound();
       } else if (user.role.equals("dragon") && !QRCode.equals("2-sky")) {
@@ -212,10 +212,10 @@ void interaction(String QRCode, String UserId) {
 
     case QR3:
       println ("You are in part 3 of the story, you need to scan QR #3!");
-      if (user.role != "princess") {
+      if (!user.role.equals("princess")) {
         println("It is not your turn.");
         WrongQRSound();
-      } else if (user.role == "princess" && !QRCode.equals("3-tea")) {
+      } else if (user.role.equals("princess") && !QRCode.equals("3-tea")) {
         println("Try another QR code.");
         WrongQRSound();
       } else {
@@ -230,7 +230,7 @@ void interaction(String QRCode, String UserId) {
 
     case QR4:
       println ("You are in part 4 of the story, you need to scan QR #4!");
-      if (user.role != "dragon") {
+      if (!user.role.equals("dragon")) {
         println("It is not your turn.");
         WrongQRSound();
       } else if (user.role.equals("dragon") && !QRCode.equals("4-nasal-spray")) {
@@ -248,7 +248,7 @@ void interaction(String QRCode, String UserId) {
 
     case QR5:
       println("You are in part 5 of the story, you need to scan TWO QR codes #5!");
-      if (user.role == "dragon") { //each other option is the prince or princess
+      if (user.role.equals("dragon")) { //each other option is the prince or princess
         println("It is not your turn.");
         WrongQRSound();
         QR5towerScanned = false;
@@ -258,7 +258,7 @@ void interaction(String QRCode, String UserId) {
         RightQRSound();
         QR5towerScanned = true;
         QR5towerScannedBy = user.role;
-        if (QR5dressScanned == true && QR5dressScannedBy == user.role) {
+        if (QR5dressScanned == true && user.role.equals (QR5dressScannedBy)) {
           QR5dressScannedBy = "";
         }
       } else if (QRCode.equals("5-dress")) {
@@ -266,7 +266,7 @@ void interaction(String QRCode, String UserId) {
         RightQRSound();
         QR5dressScanned = true;
         QR5dressScannedBy = user.role;
-        if (QR5towerScanned == true && QR5towerScannedBy == user.role) {
+        if (QR5towerScanned == true && user.role.equals(QR5towerScannedBy)) {
           QR5towerScannedBy = "";
         }
       } else {
@@ -290,7 +290,7 @@ void interaction(String QRCode, String UserId) {
 
     case QR6:
       println("You are in part 6 of the story, you need to scan TWO QR codes #6!");
-      if (user.role == "prince") { //each other option is the dragon or princess
+      if (user.role.equals("prince")) { //each other option is the dragon or princess
         println("It is not your turn.");
         WrongQRSound();
         QR6scanned = false; //makes sure that QR6 is scanned in follow up without scanning another QR in between
@@ -303,7 +303,7 @@ void interaction(String QRCode, String UserId) {
         QR6scannedBy = user.role;
         println ("Scan the same QR with other role");
         RightQRSound();
-      } else if (QR6scanned == true && QR6scannedBy != user.role && QR6scannedBy != "") {
+      } else if (QR6scanned == true && !user.role.equals(QR6scannedBy) && QR6scannedBy != "") {
         println ("QR6 is scanned twice.");
         //play sound
         if (!Scenario6Sound.isPlaying()) { 
@@ -315,10 +315,10 @@ void interaction(String QRCode, String UserId) {
 
     case QR7:
       println ("You are in part 7 of the story, you need to scan QR #7!");
-      if (user.role != "prince") {
+      if (!user.role.equals("prince")) {
         println("It is not your turn.");
         WrongQRSound();
-      } else if (user.role == "prince" && !QRCode.equals("7-pants-on-fire")) {
+      } else if (user.role.equals("prince") && !QRCode.equals("7-pants-on-fire")) {
         println("Try another QR code.");
         WrongQRSound();
       } else {
@@ -332,7 +332,7 @@ void interaction(String QRCode, String UserId) {
       break;
 
     case END:
-      println("End of the story!");
+      println ("End of the story!");
       break;
 
     default:
